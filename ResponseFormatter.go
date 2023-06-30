@@ -50,7 +50,7 @@ func (rf ResponseFormatter) WithResponse(code int, body []byte) ResponseFormatte
 	return rf
 }
 
-func (rf ResponseFormatter) attachCors(methods string, origin string) {
+func (rf ResponseFormatter) AttachCors(methods string, origin string) {
 	if origin == "" {
 		origin = "*"
 	}
