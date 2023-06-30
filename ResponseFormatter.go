@@ -49,3 +49,13 @@ func (rf ResponseFormatter) WithResponse(code int, body []byte) ResponseFormatte
 
 	return rf
 }
+
+func (rf ResponseFormatter) attachCors(methods string, origin string) {
+	if origin == "" {
+		origin = "*"
+	}
+
+	rf.Header().Set("Access-Control-Allow-Origin", origin)
+	rf.Header().Set("Access-Control-Allow-Methods", methods)
+	rf.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+}
