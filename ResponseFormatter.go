@@ -9,6 +9,10 @@ type ResponseFormatter struct {
 	http.ResponseWriter
 }
 
+func NewResponseFormatter(w http.ResponseWriter) ResponseFormatter {
+	return ResponseFormatter{ResponseWriter: w}
+}
+
 func (rf ResponseFormatter) WithCookie(name string, value string) ResponseFormatter {
 	cookie := http.Cookie{
 		Name:     name,
